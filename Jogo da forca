@@ -1,0 +1,37 @@
+import random
+
+palavras = ["besouro", "coelho", "falcão", "pavão", "urso", "cachorro"]
+palavra_secreta = random.choice(palavras)
+letras_corretas = []
+letras_erradas = []
+
+tentativas = 6
+
+print("♡♡Bem vindo ao jogo da forca da Dessa♡♡ Embarque nessa arca de noé e jogue!!")
+
+for _ in range(tentativas):
+    palavra_atualizada = ""
+    for letra in palavra_secreta:
+        if letra in letras_corretas:
+            palavra_atualizada += letra
+        else:
+            palavra_atualizada += "_ "
+
+    print("\n♡Adivinhe a palavra♡:", palavra_atualizada)
+    print("♡Suas tentativas restantes♡:", tentativas)
+    print("♡Suas letras erradas♡:", letras_erradas)
+
+    if "_" not in palavra_atualizada:
+        print("\nEbaaaaa, você venceu♡ A palavra é:", palavra_secreta)
+        break
+
+    letra = input("\n♡Digite uma letra♡: ").lower()
+
+    if letra in palavra_secreta:
+        letras_corretas.append(letra)
+    else:
+        letras_erradas.append(letra)
+        tentativas -= 1
+
+if "_" in palavra_atualizada:
+    print("\nPoxa, você perdeu. A palavra era:", palavra_secreta)
